@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그룹사공동 연구개발 TF(NVT 프로젝트) 조직·운영 방안</title>
+<style>
+  :root{
+    --ivory:#faf6ec;
+    --ivory-deep:#f2ead6;
+    --navy:#1f3350;
+    --navy-deep:#16273d;
+    --line:#e2d9c2;
+    --line-soft:#eee7d4;
+    --card:#ffffff;
+    --accent:#a97a2f;
+    --accent-deep:#8a621f;
+    --accent-soft:#f0e2c2;
+    --ink:#232a33;
+    --ink-soft:#5d6672;
+    --good:#3c6e52;
+    --good-soft:#e2ece3;
+    --warn:#a1472e;
+    --font: "Pretendard", "Noto Sans KR", "Malgun Gothic", -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:var(--font);
+    line-height:1.7;
+    font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px 100px;}
+
+  /* HERO — 아이보리 배경, 고딕체, 고대비 가독성 */
+  .hero{
+    background:linear-gradient(175deg,var(--ivory) 0%,var(--ivory-deep) 100%);
+    color:var(--ink);
+    padding:60px 32px 40px;
+    border-bottom:3px solid var(--navy);
+    position:relative;
+  }
+  .hero-inner{max-width:1040px;margin:0 auto;position:relative;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-deep);font-weight:800;margin-bottom:20px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  h1.title{
+    font-family:var(--font);
+    font-size:32px;
+    font-weight:800;
+    line-height:1.42;
+    margin:0 0 14px;
+    color:var(--navy-deep);
+    letter-spacing:-0.01em;
+  }
+  .subtitle{color:var(--ink-soft);font-size:15.5px;max-width:680px;margin:0 0 30px;font-weight:500;}
+  .hero-meta{
+    display:flex;gap:28px;flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .hero-meta div{font-size:12.5px;color:var(--ink-soft);font-weight:600;}
+  .hero-meta strong{display:block;color:var(--navy-deep);font-size:14.5px;font-weight:800;margin-top:4px;}
+
+  /* SECTIONS */
+  section{padding:46px 0;border-bottom:1px solid var(--line-soft);}
+  section:last-child{border-bottom:none;}
+  .sec-label{
+    font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--accent-deep);font-weight:800;margin-bottom:10px;
+  }
+  h2{
+    font-family:var(--font);
+    font-size:23px;font-weight:800;color:var(--navy-deep);
+    margin:0 0 20px;letter-spacing:-0.01em;
+  }
+  h3{
+    font-size:16px;font-weight:800;color:var(--navy);margin:28px 0 12px;
+  }
+  p{color:var(--ink);margin:0 0 14px;}
+  .lead{font-size:15.8px;color:var(--ink-soft);max-width:760px;font-weight:500;}
+
+  /* Background cards */
+  .bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+  @media(max-width:780px){.bg-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;
+  }
+  .card h4{
+    margin:0 0 12px;font-size:14px;color:var(--navy);font-weight:800;
+    display:flex;align-items:center;gap:8px;
+  }
+  .card h4 .tag{
+    font-size:10.5px;padding:3px 8px;border-radius:20px;
+    background:var(--accent-soft);color:var(--accent-deep);font-weight:800;letter-spacing:.04em;
+  }
+  .card ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.8px;}
+  .card li{margin-bottom:8px;}
+  .card li b{color:var(--ink);font-weight:700;}
+
+  /* Issue chips */
+  .issue-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
+  .issue{
+    flex:1 1 220px;background:var(--card);border-left:3px solid var(--warn);
+    border-radius:6px;padding:14px 16px;font-size:13.6px;color:var(--ink);
+    box-shadow:0 1px 2px rgba(0,0,0,0.03);
+  }
+  .issue b{display:block;font-size:12.5px;color:var(--warn);margin-bottom:5px;letter-spacing:.02em;font-weight:800;}
+
+  /* NVT 근거 카드 */
+  .basis-strip{
+    display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px;
+  }
+  .basis-chip{
+    background:var(--accent-soft);color:var(--accent-deep);
+    font-size:12px;font-weight:800;padding:6px 13px;border-radius:20px;
+    border:1px solid #e3cf9c;
+  }
+
+  /* Org chart : PM/PL 구조 */
+  .orgchart{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:38px 24px 30px;margin-top:22px;
+  }
+  .org-level{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+  .org-node{
+    border-radius:8px;
+    padding:13px 22px;font-size:13.8px;font-weight:800;text-align:center;
+    min-width:170px; border:1.5px solid transparent;
+  }
+  .org-node.committee{background:var(--navy-deep);color:#fdfaf1;}
+  .org-node.pm{background:var(--accent);color:#3a2a0e;min-width:220px;font-size:14.5px;}
+  .org-node.pl{background:#fff;color:var(--navy);border-color:var(--navy);min-width:190px;}
+  .org-node.member{background:var(--ivory-deep);color:var(--ink);border-color:var(--line);font-weight:600;font-size:12.8px;min-width:150px;}
+  .org-connector{width:1px;height:26px;background:var(--line);margin:0 auto;}
+  .org-branch-line{display:flex;justify-content:space-between;width:76%;margin:0 auto;}
+  .org-branch-line.two{width:56%;}
+  .org-branch-line .stub{width:1px;height:18px;background:var(--line);}
+  .org-team{display:flex; flex-direction:column; align-items:center; gap:8px;}
+  .org-team-label{font-size:11.5px;color:var(--ink-soft);font-weight:700;letter-spacing:.02em;}
+  .org-team .org-connector-mini{width:1px;height:14px;background:var(--line);}
+  .org-member-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:26px;padding-top:18px;border-top:1px dashed var(--line);}
+  .legend span{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;font-weight:600;}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;}
+  .legend i.c1{background:var(--navy-deep);}
+  .legend i.c2{background:var(--accent);}
+  .legend i.c3{background:#fff;border:1.5px solid var(--navy);}
+  .legend i.c4{background:var(--ivory-deep);border:1px solid var(--line);}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13.4px;background:var(--card);}
+  caption{caption-side:top;text-align:left;font-size:12px;color:var(--ink-soft);margin-bottom:8px;font-weight:600;}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--navy-deep);color:#fdfaf1;font-weight:800;font-size:12.6px;letter-spacing:.02em;}
+  tr:nth-child(even) td{background:#faf7ef;}
+  td.center{text-align:center;}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:800;}
+  .badge.pm{background:var(--accent-soft);color:var(--accent-deep);}
+  .badge.pl{background:var(--good-soft);color:var(--good);}
+
+  /* Option comparison */
+  .opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;}
+  @media(max-width:900px){.opt-grid{grid-template-columns:1fr;}}
+  .opt-card{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:20px;display:flex;flex-direction:column;}
+  .opt-card.recommended{border:2px solid var(--accent);position:relative;box-shadow:0 6px 18px rgba(169,122,47,0.13);}
+  .opt-card.recommended::before{
+    content:"권고안";position:absolute;top:-13px;left:16px;
+    background:var(--accent);color:#3a2a0e;font-size:11px;font-weight:800;
+    padding:4px 12px;border-radius:20px;letter-spacing:.03em;
+  }
+  .opt-num{font-size:26px;color:var(--navy);font-weight:800;}
+  .opt-name{font-size:14.5px;font-weight:800;color:var(--navy-deep);margin:4px 0 12px;}
+  .opt-card p{font-size:13px;color:var(--ink-soft);margin-bottom:10px;}
+  .opt-list{margin:0;padding-left:16px;font-size:12.8px;color:var(--ink);}
+  .opt-list li{margin-bottom:6px;}
+  .opt-foot{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:12px;font-weight:600;color:var(--ink-soft);}
+  .plus{color:var(--good);font-weight:800;}
+  .minus{color:var(--warn);font-weight:800;}
+
+  /* Roadmap */
+  .roadmap{display:flex;flex-direction:column;gap:0;margin-top:22px;}
+  .rm-item{display:grid;grid-template-columns:110px 1px 1fr;gap:0;}
+  .rm-phase{font-size:12.5px;color:var(--accent-deep);font-weight:800;padding:14px 14px 14px 0;text-align:right;}
+  .rm-line{position:relative;}
+  .rm-line::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line);}
+  .rm-line::after{content:"";position:absolute;left:-4px;top:20px;width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .rm-content{padding:14px 0 14px 22px;}
+  .rm-content b{display:block;color:var(--navy-deep);font-size:14px;margin-bottom:4px;font-weight:800;}
+  .rm-content span{font-size:13px;color:var(--ink-soft);}
+
+  .callout{background:#fbf4e2;border:1px solid var(--accent-soft);border-radius:10px;padding:20px 22px;margin-top:20px;}
+  .callout b{color:var(--accent-deep);}
+
+  footer{text-align:center;padding:36px 0 8px;color:var(--ink-soft);font-size:12px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> NVT PROJECT · ORGANIZATION PLAN</div>
+    <h1 class="title">그룹사공동 연구개발 TF 조직 및<br>NVT 프로젝트 운영 방안</h1>
+    <p class="subtitle">누리플렉스 · 누리빌 · 누리보이스 3개사 인력이 소속과 무관하게 하나의 프로젝트로 결집하는 NVT 제도를, NVT운영규정의 <b>PM–PL 체계</b>에 따라 근로기준법·파견법 리스크 없이 현실적으로 구현하기 위한 조직 설계안입니다.</p>
+    <div class="hero-meta">
+      <div>PM (Project Manager)<strong>최의천 그룹장</strong></div>
+      <div>PL (Project Leader)<strong>김성회 팀장 외 각사 해당업무 팀장</strong></div>
+      <div>참여사<strong>누리플렉스 · 누리빌 · 누리보이스</strong></div>
+      <div>공간<strong>6층 오픈데스크존 상주</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 배경 -->
+  <section>
+    <div class="sec-label">01 · Background</div>
+    <h2>추진 배경</h2>
+    <p class="lead">회장님 주재 회의에서는 "파견"을 전제로 논의가 시작되었으나, 연구직에 대한 파견은 파견법상 허용되지 않고, 이후 진행된 누리보이스·누리플렉스 인사팀장 실무 협의에서는 인원들이 소속 이동(전적)을 원하지 않는 현실적 제약이 확인되었습니다. 이에 따라 <b>소속은 유지하되, NVT운영규정이 정한 PM–PL 체계</b>로 업무지시·결재를 프로젝트 중심으로 재설계하는 방향이 도출되었습니다.</p>
+
+    <div class="bg-grid">
+      <div class="card">
+        <h4>회장님 주재 논의 <span class="tag">2026-07-01 오전</span></h4>
+        <ul>
+          <li><b>최초 제안</b> — 김성회·홍경호·손태영·장수빈 4명을 누리빌로 연단위 파견 발령</li>
+          <li><b>실무 반론(조명관)</b> — 급여를 각사에서 지급한다면 파견보다 TFT 구성이 적합</li>
+          <li><b>회장님 재지시(조송만)</b> — TF는 업무효율이 낮으므로 완전 파견 전환 희망, 단 근로기준법 범위 내에서</li>
+          <li><b>법적 제약(신성호)</b> — 연구직은 회사간 파견 자체가 <b>파견법상 불허</b> → 업무위탁계약 또는 공동R&D협약(MOU) 방식 권고</li>
+          <li><b>CEO 코멘트(한정훈)</b> — 당사자들이 소속이동보다 파견을 요청했던 경위 공유, 국가연구원 등록 등 제약자는 규정 준수 필요</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>인사팀장 실무 협의 <span class="tag">최윤혜 · 홍광준</span></h4>
+        <ul>
+          <li><b>조직 실태</b> — 전략기획2팀(김성회 팀장·홍경호 프로)이 이미 사실상 한 팀으로 기능 중 → 별도 파견 실익 없음</li>
+          <li><b>공간 전략</b> — 좌석을 6층 오픈데스크존으로 이전, 회의는 PT 가능 공간 대여 (6층 타 입주사와 형평성 유지)</li>
+          <li><b>결재 원칙</b> — 리소스가 가장 많이 투입되는 업무를 <b>MAIN 업무</b>로 지정, 해당 팀장이 근태·비용 결재를 전담, 타 팀장은 협의결재</li>
+          <li><b>기존 문제</b> — 복수 팀장·임원의 동시 지시로 보고라인 혼선, 업무 과부하 인식, 몰입감·소속감 저하</li>
+          <li><b>결론</b> — 소속 이동 강요 불가한 현실 고려, 소속 유지형 대안 중 선택 필요</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 핵심 이슈 -->
+  <section>
+    <div class="sec-label">02 · Key Constraints</div>
+    <h2>핵심 이슈 및 제약사항</h2>
+    <div class="issue-row">
+      <div class="issue"><b>법률 리스크</b>연구직 회사간 파견은 파견법상 금지 — 파견 형식 자체 사용 불가</div>
+      <div class="issue"><b>인사 리스크</b>대상자 전원 소속 이동(전적)에 부정적 — 강제 불가</div>
+      <div class="issue"><b>결재 혼선</b>복수 팀장 동시 지시로 근태·비용 결재라인 중복·충돌</div>
+      <div class="issue"><b>세무·회계</b>인건비 부담 주체와 산출물(라이선스·수익) 귀속처가 불명확할 경우 이전가격·부당행위계산부인 이슈 소지</div>
+      <div class="issue"><b>제도 제약자</b>국가연구개발과제 참여자·전문연구요원 등은 소속·근무지 변경에 규정상 제한 존재</div>
+    </div>
+  </section>
+
+  <!-- 조직 구성안 : PM/PL -->
+  <section>
+    <div class="sec-label">03 · Organization — PM / PL Structure</div>
+    <h2>NVT PM–PL 체계에 따른 조직 구성안</h2>
+    <p class="lead">신설 법인이나 소속 이동 없이, <b>NVT운영규정 제6조</b>가 정한 PM–PL 위임 구조를 그대로 적용합니다. 규정상 PM은 "직군별로 관리 수요가 분화되어 있는 경우" PL을 지정해 실무 관리 권한을 위임할 수 있으며, 본 TF는 회사가 서로 다른 3개사 인력이 참여하는 전형적 사례에 해당합니다.</p>
+
+    <div class="basis-strip">
+      <span class="basis-chip">근거: 제6조(PM의 역할) 6항 — PL 지정 요건</span>
+      <span class="basis-chip">근거: 제3조 15·16호 — PM/PL 정의</span>
+      <span class="basis-chip">근거: 제7조(그룹장의 역할)</span>
+    </div>
+
+    <div class="orgchart">
+      <div class="org-level">
+        <div class="org-node committee">NVT운영위원회</div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-level">
+        <div class="org-node pm">PM — 최의천 그룹장<br><span style="font-weight:500;font-size:11.5px;">프로젝트 총괄 기획·운영·평가 책임자</span></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-branch-line">
+        <div class="stub"></div><div class="stub"></div><div class="stub"></div>
+      </div>
+      <div class="org-level">
+        <div class="org-team">
+          <div class="org-node pl">PL — 김성회 팀장<br><span style="font-weight:500;font-size:11.3px;">(누리플렉스 · 전략기획2팀)</span></div>
+          <div class="org-connector-mini"></div>
+          <div class="org-member-row">
+            <div class="org-node member">홍경호 프로</div>
+          </div>
+        </div>
+        <div class="org-team">
+          <div class="org-node pl">PL — 유영언 프로<br><span style="font-weight:500;font-size:11.3px;">(누리보이스 · SW개발)</span></div>
+          <div class="org-connector-mini"></div>
+          <div class="org-member-row">
+            <div class="org-node member">손태영</div>
+          </div>
+        </div>
+        <div class="org-team">
+          <div class="org-node pl">PL — 최의천 프로 겸직<br><span style="font-weight:500;font-size:11.3px;">(누리보이스 · 빌 지킬케어/빌링)</span></div>
+          <div class="org-connector-mini"></div>
+          <div class="org-member-row">
+            <div class="org-node member">장수빈</div>
+          </div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="c1"></i>NVT운영위원회</span>
+        <span><i class="c2"></i>PM (총괄)</span>
+        <span><i class="c3"></i>PL (위임 실무관리)</span>
+        <span><i class="c4"></i>프로젝트 팀원</span>
+      </div>
+    </div>
+
+    <h3>PM·PL 역할과 권한 (제6조 기준)</h3>
+    <table>
+      <tr><th style="width:14%;">구분</th><th style="width:22%;">담당</th><th>역할 및 권한</th></tr>
+      <tr>
+        <td><span class="badge pm">PM</span></td>
+        <td>최의천 그룹장</td>
+        <td>프로젝트 총괄 기획·실행·평가 책임자. NVT운영위원회 승인 사안에 대해 전결 예산 집행권을 가지며, 관리 범위가 3개사·복수 직군으로 분화되어 있어 PL을 지정해 실무 권한을 위임함(제6조 6항 나호).</td>
+      </tr>
+      <tr>
+        <td><span class="badge pl">PL</span></td>
+        <td>김성회 팀장 (누리플렉스)</td>
+        <td>전략기획2팀 실무 리더로서 PM으로부터 위임받은 범위 내에서 PM과 동등한 권한·책임을 가짐. 홍경호 프로의 업무 배분 및 1차 확인을 담당.</td>
+      </tr>
+      <tr>
+        <td><span class="badge pl">PL</span></td>
+        <td>각사 해당업무 팀장<br>(유영언 프로 / 최의천 프로 등)</td>
+        <td>누리보이스 인원 중 본인 업무 리소스가 가장 큰(MAIN) 영역의 팀장이 PL을 겸함. 팀원의 근태·비용 결재 1차 승인권자.</td>
+      </tr>
+    </table>
+
+    <h3>운영 원칙</h3>
+    <table>
+      <tr><th style="width:20%;">구분</th><th>내용</th></tr>
+      <tr><td>소속</td><td>전원 <b>원소속(누리플렉스/누리빌/누리보이스) 유지</b>, 전적·파견 발령 없음</td></tr>
+      <tr><td>업무지시</td><td>PM(최의천 그룹장)이 프로젝트 범위 내 업무 총괄 지시, 각 PL이 소관 인원에게 세부업무 배분</td></tr>
+      <tr><td>결재라인</td><td>그룹웨어 기안 시 소관 <span class="badge pl">PL</span>을 1차 승인권자로, <span class="badge pm">PM</span>을 최종 협의·보고 라인으로 등록 — 근태·비용품의 모두 동일 원칙 적용</td></tr>
+      <tr><td>근무공간</td><td>6층 오픈데스크존 공동 좌석 운영, 회의는 PT 가능 대여공간 사용 (6층 타 입주사와 형평성 유지 원칙 준수)</td></tr>
+      <tr><td>인건비</td><td>원소속 회사가 계속 지급 (급여 이관 없음) — 회사간 정산은 협약서로 별도 처리</td></tr>
+      <tr><td>법적 형식</td><td>파견계약 미사용. <b>업무위탁계약</b> 또는 <b>공동연구개발협약(R&D MOU)</b>로 회사간 협업 근거 마련, NVT 지분·리저브 배분은 NVT운영규정에 따름</td></tr>
+    </table>
+  </section>
+
+  <!-- 인원 배치 현황 -->
+  <section>
+    <div class="sec-label">04 · Staffing Map</div>
+    <h2>인원별 업무배치 및 PL 결재라인 현황</h2>
+    <p class="lead">제출된 현황표를 기준으로, 인당 복수 지시자가 있는 경우 리소스 투입이 가장 큰 업무의 팀장을 PL로 지정해 결재라인을 단일화합니다.</p>
+    <table>
+      <caption>누리빌 파견 검토 대상 (누리플렉스 소속)</caption>
+      <tr><th>성명</th><th>현 소속/역할</th><th>NVT 내 역할</th><th>결재(PL)</th></tr>
+      <tr><td>김성회</td><td>누리플렉스 전략기획2팀 팀장</td><td>PL (누리플렉스 파트 실무 리더, PM과 협의 수행)</td><td class="center"><span class="badge pl">PL 본인</span></td></tr>
+      <tr><td>홍경호</td><td>누리플렉스 전략기획2팀 프로</td><td>PL 지휘 하 PM 지시 업무 수행</td><td class="center"><span class="badge pl">김성회 PL</span></td></tr>
+    </table>
+
+    <table style="margin-top:24px;">
+      <caption>누리보이스 소속 인원 업무 및 지시자 현황</caption>
+      <tr><th>직원명</th><th>업무 및 지시자</th><th>PL 결재</th><th>비고</th></tr>
+      <tr>
+        <td>장수빈</td>
+        <td>
+          보이스_Mybee (회장님 지시) — 과거<br>
+          그룹사_AI 커피한잔 (회장님지시+김성회 PL, ’26.7.1)<br>
+          빌_지킬케어·빌링 (최의천 프로 지시)
+        </td>
+        <td class="center"><span class="badge pl">최의천 프로 PL</span></td>
+        <td>근태결재 → 최의천 프로 전환</td>
+      </tr>
+      <tr>
+        <td>손태영</td>
+        <td>
+          그룹사_AI 커피한잔 (회장님지시+김성회 PL)<br>
+          보이스_SW 개발 (신성호 그룹장+유영언 프로)<br>
+          → 전화기SW, 아미고 개발자 등록
+        </td>
+        <td class="center"><span class="badge pl">유영언 프로 PL</span></td>
+        <td>근태결재 → 유영언 프로 전환</td>
+      </tr>
+    </table>
+
+    <div class="callout">
+      <b>운영 팁 —</b> PL 변경 시점(예: 장수빈 ’26.7.1 이후 최의천 프로 PL로 전환)은 그룹웨어 결재라인 변경 이력으로 남기고, PM 또는 타 PL이 장기 업무를 요청할 경우 소관 PL과 사전 협의 후 진행하도록 운영규정에 명문화합니다. PL 지정·보상은 NVT운영규정 제6조 6항에 따라 지분율 또는 리저브 예산으로 정당하게 지급합니다.
+    </div>
+  </section>
+
+  <!-- 대안 비교 -->
+  <section>
+    <div class="sec-label">05 · Alternatives</div>
+    <h2>소속·비용처리 대안 비교</h2>
+    <p class="lead">인사팀장 협의에서 제시된 3가지 안을 조직운영 효율성, 인사 리스크, 세무·회계 명확성 기준으로 비교합니다. PM–PL 조직안은 세 대안 모두와 병행 적용 가능합니다.</p>
+
+    <div class="opt-grid">
+      <div class="opt-card recommended">
+        <div class="opt-num">1</div>
+        <div class="opt-name">단계적 R&D 협약형<br><span style="font-weight:500;font-size:12px;color:var(--ink-soft);">(기획·파일럿 → 수익화 후 정산)</span></div>
+        <p>기획·파일럿 기간은 각사가 자기 인원 급여를 그대로 지급. 수익모델 실현 시 라이선스는 누리빌로 귀속, 이후 공동R&D협약(MOU)에 따라 각사가 유지보수·개발비를 누리빌에 정산.</p>
+        <ul class="opt-list">
+          <li><span class="plus">+</span> 소속 이동 없이 즉시 실행 가능</li>
+          <li><span class="plus">+</span> 수익화 이전 비용부담 최소화</li>
+          <li><span class="plus">+</span> 라이선스 귀속처가 명확해 회계처리 용이</li>
+          <li><span class="minus">−</span> 수익배분 평가표(기여도·투입공수·유지보수) 사전 설계 필요</li>
+        </ul>
+        <div class="opt-foot">권고 근거: 파견법 저촉 없음 · 인사 리스크 최소 · 협약서로 세무 모호성 해소 가능</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-num">2</div>
+        <div class="opt-name">선(先)협약 투자금형</div>
+        <p>공동연구개발협약을 먼저 체결하고, 수익화 이전 인건비는 각사가 "투자금" 명목으로 부담. 수익화 시점부터 수익배분 구조로 전환.</p>
+        <ul class="opt-list">
+          <li><span class="plus">+</span> 초기부터 계약관계가 명확</li>
+          <li><span class="minus">−</span> "투자금" 성격 규정(자본적 지출 vs 비용) 세무처리 사전 정리 필요</li>
+          <li><span class="minus">−</span> 수익화 지연 시 투자금 회수·손금처리 이슈 발생 가능</li>
+        </ul>
+        <div class="opt-foot">1안과 실행방식 유사, 회계과목 설계 부담이 상대적으로 큼</div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-num">3</div>
+        <div class="opt-name">소속 변경(전적)형</div>
+        <p>누리보이스·누리플렉스 인원을 누리빌로 완전히 소속 이동. 업무지시·수익·비용처리 주체가 단일화됨.</p>
+        <ul class="opt-list">
+          <li><span class="plus">+</span> 지시·회계·비용처리가 가장 명확</li>
+          <li><span class="minus">−</span> 당사자 전원 소속이동 반대 — 강행 시 인사 리스크·이직 우려</li>
+          <li><span class="minus">−</span> 국가연구원 등록자 등 규정상 이동 제약자 존재</li>
+        </ul>
+        <div class="opt-foot">이상적이나 현재 시점 실행 불가 — 중장기 옵션으로 보류</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 세무/회계/노무 -->
+  <section>
+    <div class="sec-label">06 · Compliance</div>
+    <h2>세무·회계·노무 체크리스트</h2>
+    <table>
+      <tr><th style="width:18%;">영역</th><th>점검 항목</th><th style="width:18%;">담당</th></tr>
+      <tr><td>노무</td><td>업무위탁계약서에 지휘·감독 주체, 업무범위, 기간 명시 → 위장파견 소지 차단</td><td>각사 인사팀</td></tr>
+      <tr><td>노무</td><td>PL 지정·변경 시 그룹웨어 상 발령/지시 근거 문서(품의) 보관</td><td>인사팀</td></tr>
+      <tr><td>세무</td><td>공동R&D협약(MOU)에 인건비 정산·라이선스 귀속·수익배분 산식을 사전 확정 → 부당행위계산부인 리스크 예방</td><td>경영관리그룹</td></tr>
+      <tr><td>세무</td><td>수익배분 평가표(개발기여도·투입공수·유지보수) 산정기준을 계약서 별지로 첨부, 매년 정산근거 보관</td><td>경영관리그룹·연구소</td></tr>
+      <tr><td>회계</td><td>파일럿 기간 인건비는 각사 판관비/연구개발비로 처리, 라이선스 귀속 후 정산금은 누리빌 매입(용역비), 각사 매출(용역수익)로 계상</td><td>재무팀</td></tr>
+      <tr><td>제도</td><td>국가연구개발과제 참여자·전문연구요원 등록자는 개별 규정 확인 후 예외 관리대상으로 별도 지정, NVT인센티브 이중지급 배제(제14조 4항)</td><td>연구소·인사팀</td></tr>
+    </table>
+  </section>
+
+  <!-- 실행 로드맵 -->
+  <section>
+    <div class="sec-label">07 · Roadmap</div>
+    <h2>실행 로드맵</h2>
+    <div class="roadmap">
+      <div class="rm-item">
+        <div class="rm-phase">1단계<br>~7월 중</div>
+        <div class="rm-line"></div>
+        <div class="rm-content"><b>협약서·PM/PL 결재라인 정비</b><span>공동R&D협약(MOU) 초안 작성, NVT운영위원회에 프로젝트 등록, 그룹웨어 PM/PL 결재라인 등록, 6층 오픈데스크존 좌석 배치</span></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">2단계<br>파일럿 기간</div>
+        <div class="rm-line"></div>
+        <div class="rm-content"><b>각사 급여 유지 + 프로젝트 운영</b><span>1안 기준 각사가 자사 인원 급여 지급, PM 주관 주간 진행상황 공유, NVT 지분·수익배분 평가표 설계</span></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">3단계<br>수익화 시점</div>
+        <div class="rm-line"></div>
+        <div class="rm-content"><b>라이선스 귀속 및 정산 개시</b><span>사업 라이선스 누리빌 귀속, 확정된 평가표에 따라 각사 유지보수·개발비 정산 및 NVT 확정 지급 개시</span></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-phase">4단계<br>정례화</div>
+        <div class="rm-line"></div>
+        <div class="rm-content"><b>반기 단위 재검토</b><span>NVT운영규정에 따른 반기 평가, 인원 변동·국가과제 참여 여부·수익배분율을 재점검하고 필요시 3안(소속변경) 재검토</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>그룹사공동 연구개발 TF (NVT 프로젝트) 조직·운영 방안 · 2026-07-02 개정 · NVT운영(평가 보상) 규정 v5 기준</footer>
+
+</body>
+</html>
